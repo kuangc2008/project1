@@ -1,3 +1,4 @@
+
 package com.kc.threadsample;
 
 import java.lang.ref.WeakReference;
@@ -18,44 +19,44 @@ public class PhotoView extends ImageView {
     public PhotoView(Context context) {
         super(context);
     }
-    
+
     public PhotoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         getAttributes(attrs);
     }
-    
-    
+
     public PhotoView(Context context, AttributeSet attrs, int defaultStyle) {
         super(context, attrs, defaultStyle);
         getAttributes(attrs);
     }
 
     private void getAttributes(AttributeSet attrs) {
-        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.ImageDownloaderView);
-        mHideShowResId = attributes.getResourceId(R.styleable.ImageDownloaderView_hideShowSibling, -1);
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs,
+                R.styleable.ImageDownloaderView);
+        mHideShowResId = attributes.getResourceId(R.styleable.ImageDownloaderView_hideShowSibling,
+                -1);
         attributes.recycle();
     }
-    
 
-    
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
 
     private URL mImageUrl;
+
     public void setImageURL(URL pictureURL, boolean cacheFlag, Drawable defaultDrawable) {
-        if(mImageUrl != null) {
-            if(!mImageUrl.equals(pictureURL)) {
-                //remove download
+        if (mImageUrl != null) {
+            if (!mImageUrl.equals(pictureURL)) {
+                // remove download
             } else {
                 return;
             }
         }
-        
+
         setImageDrawable(defaultDrawable);
         mImageUrl = pictureURL;
-        
+
     }
 
     public URL getLocation() {
@@ -63,14 +64,15 @@ public class PhotoView extends ImageView {
     }
 
     private WeakReference<View> mThisView;
+
     public void setStatusDrawable(Drawable drawable) {
-        if(mThisView == null) {
+        if (mThisView == null) {
             setImageDrawable(drawable);
         }
     }
 
     public void setStatusResource(int resId) {
-        if(mThisView == null) {
+        if (mThisView == null) {
             setImageResource(resId);
         }
     }

@@ -1,3 +1,4 @@
+
 package com.kc.threadsample;
 
 import java.lang.ref.WeakReference;
@@ -13,14 +14,15 @@ public class PhotoTask {
     private boolean mCacheEnabled;
     private int mTargetWidth;
     private int mTargetHeight;
-    
+
     PhotoTask() {
         mDownloadRunnable = null;
-        
+
         sPhotoManager = MyPhotoManager.getInstance();
     }
-    
-    public void initializeDownloaderTask(MyPhotoManager photoManager, PhotoView photoView, boolean cacheFalg) {
+
+    public void initializeDownloaderTask(MyPhotoManager photoManager, PhotoView photoView,
+            boolean cacheFalg) {
         sPhotoManager = photoManager;
         mImageURL = photoView.getLocation();
         mImageWeakRef = new WeakReference<PhotoView>(photoView);
@@ -32,31 +34,32 @@ public class PhotoTask {
     public boolean isCacheEnable() {
         return mCacheEnabled;
     }
-    
-    
+
     public URL getImageURL() {
         return mImageURL;
     }
-    
+
     public PhotoView getPhotoView() {
-        if( mImageWeakRef != null) {
+        if (mImageWeakRef != null) {
             return mImageWeakRef.get();
         }
         return null;
     }
-    
+
     byte[] mImageBuffer;
+
     public void setByteBuffer(byte[] imageBuffer) {
         mImageBuffer = imageBuffer;
     }
-    
+
     public byte[] getByteBuffer() {
         return mImageBuffer;
     }
-    
+
     Runnable getHTTPDownloadRunnable() {
         return mDownloadRunnable;
     }
+
     Runnable getPhotoDecodeRunnable() {
         return mDecodeRunnable;
     }
