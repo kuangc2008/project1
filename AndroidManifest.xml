@@ -29,7 +29,12 @@
         <service 
             android:name="com.kc.threadsample.MyRssPullService"
             android:exported="false"
-            ></service>
+            />
+        <provider
+            android:name="com.kc.threadsample.MyDataProvider"
+            android:exported="false" 
+            android:authorities="com.kc.threadsample"
+            />
     </application>
 
 </manifest>
